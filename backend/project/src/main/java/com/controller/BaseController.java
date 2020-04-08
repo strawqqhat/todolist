@@ -1,12 +1,12 @@
-package controller;
+package com.controller;
 
-import error.BusinessException;
-import error.EmBusinessError;
+import com.response.CommonReturnType;
+import com.error.BusinessException;
+import com.error.EmBusinessError;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import response.CommonReturnType;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;

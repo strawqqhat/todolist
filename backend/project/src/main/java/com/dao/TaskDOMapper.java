@@ -1,6 +1,8 @@
-package dao;
+package com.dao;
 
-import dataobject.TaskDO;
+import com.dataobject.TaskDO;
+
+import java.util.List;
 
 public interface TaskDOMapper {
     /**
@@ -50,4 +52,6 @@ public interface TaskDOMapper {
      * @mbg.generated Wed Apr 08 22:43:12 CST 2020
      */
     int updateByPrimaryKey(TaskDO record);
+
+    List<TaskDO> listTasks();
 }

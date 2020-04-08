@@ -1,8 +1,6 @@
-package response;
+package com.response;
 
 import lombok.Data;
-
-import java.util.Map;
 
 /**
  * @author czf

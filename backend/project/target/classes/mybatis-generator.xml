@@ -16,7 +16,7 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
         <!-- 生成DataObject类的存放位置 -->
-        <javaModelGenerator targetPackage="dataobject" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.dataobject" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -26,7 +26,7 @@
         </sqlMapGenerator>
 
         <!-- 生成Dao类存放位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="dao"  targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dao"  targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
@@ -37,7 +37,7 @@
 <!--        <table tableName="order_info" domainObjectName="OrderDO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="fasle" selectByExampleQueryId="false"/>-->
 <!--        <table tableName="sequence_info" domainObjectName="SequenceDO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="fasle" selectByExampleQueryId="false"/>-->
 <!--        <table tableName="promo" domainObjectName="PromoDO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="fasle" selectByExampleQueryId="false"/>-->
-        <table tableName="stock_log" domainObjectName="StockLogDO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="fasle" selectByExampleQueryId="false"/>
+        <table tableName="task_info" domainObjectName="TaskDO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="fasle" selectByExampleQueryId="false"/>
 
     </context>
 </generatorConfiguration>

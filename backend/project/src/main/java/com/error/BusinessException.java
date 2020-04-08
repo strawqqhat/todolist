@@ -1,4 +1,4 @@
-package error;
+package com.error;
 
 /**
  * @author czf

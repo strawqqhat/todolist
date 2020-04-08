@@ -2,7 +2,7 @@ package error;
 
 /**
  * @author czf
- * @Date 2020/4/9 3:27 下午
+ * @Date 2020/4/9 11:27 下午
  */
 public interface CommonError {
     public int getErrCode();

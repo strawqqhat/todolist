@@ -142,5 +142,9 @@
     from task_info
     where task_name = #{taskName,jdbcType=VARCHAR}
   </select>
+  <delete id="deleteByTaskName">
+    delete from task_info
+    where task_name = #{taskName,jdbcType=VARCHAR}
+  </delete>
 
 </mapper>

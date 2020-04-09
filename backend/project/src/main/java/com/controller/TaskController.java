@@ -12,6 +12,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,12 +34,12 @@ public class TaskController extends BaseController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
     public CommonReturnType test(){
         return CommonReturnType.create("test");
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
     public CommonReturnType listTasks(){
         List<TaskModel> taskModelList = taskService.getTaskList();
         List<TaskVO> taskVOList = taskModelList.stream().map(taskModel -> {
@@ -62,7 +63,7 @@ public class TaskController extends BaseController {
         return taskVO;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST,produces="application/json;charset=UTF-8")
     public CommonReturnType addTask(@RequestParam(value = "id",required = false) Integer id,
                                     @RequestParam(value = "taskName",required = true)String taskName,
                                     @RequestParam(value = "description", required = false)String description,
@@ -79,16 +80,21 @@ public class TaskController extends BaseController {
             taskModel.setDeadline(DateTime.parse(deadline, formatter));
         }
         taskService.addTask(taskModel);
+        //debug
+        System.out.println(taskModel);
         return CommonReturnType.create(null);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public CommonReturnType deleteTask(@RequestParam("id")Integer id){
-        taskService.deleteTask(id);
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE,produces="application/json;charset=UTF-8")
+    public CommonReturnType deleteTask(@RequestParam(value = "id", required = false)Integer id,
+                                       @RequestParam(value = "taskName", required = true )String taskName ){
+        if (id!=null)
+            taskService.deleteTask(id);
+        else taskService.deleteTask(taskName);
         return CommonReturnType.create(null);
     }
 
-    @RequestMapping(value = "/modify", method = RequestMethod.PUT)
+    @RequestMapping(value = "/modify", method = RequestMethod.PUT,produces="application/json;charset=UTF-8")
     public CommonReturnType modifyTask(@RequestParam(value = "id",required = false) Integer id,
                                        @RequestParam(value = "taskName",required = true)String taskName,
                                        @RequestParam(value = "description", required = false)String description,

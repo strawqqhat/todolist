@@ -4,6 +4,9 @@ import com.response.CommonReturnType;
 import com.service.TaskService;
 import com.service.model.TaskModel;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,6 +62,11 @@ public class TaskController extends BaseController {
         taskModel.setTaskName(taskName);
         taskModel.setFinished(finished);
         taskModel.setId(id);
+
+        if (deadline!=null) {
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+            taskModel.setDeadline(DateTime.parse(deadline,formatter));
+        }
         taskService.modifyTask(taskModel);
         return CommonReturnType.create(null);
     }

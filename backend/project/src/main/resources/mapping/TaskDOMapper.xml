@@ -136,4 +136,11 @@
     id, task_name, description,deadline,finished
     from task_info
   </select>
+  <select id="selectByTaskName" resultMap="BaseResultMap">
+    select
+    id, task_name, description,deadline,finished
+    from task_info
+    where task_name = #{taskName,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

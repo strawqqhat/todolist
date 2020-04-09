@@ -8,7 +8,9 @@ public enum EmBusinessError implements CommonError {
     // 通用错误类型
     PARAMETER_VALIDATION_ERROR(10001,"参数不合法"),
     UNKNOWN_ERROR(10002,"未知错误"),
+    FORMAT_ERROR(10003,"格式错误")
     ;
+
 
     private int errCode;
     private String errMsg;

@@ -51,8 +51,12 @@ public class TaskServiceImpl implements TaskService {
      * @param taskModel
      */
     @Override
-    public void addTask(TaskModel taskModel) {
-        taskDOMapper.insertSelective(convertDataObjectFromTaskModel(taskModel));
+    public void addTask(TaskModel taskModel) throws BusinessException {
+        try {
+            taskDOMapper.insertSelective(convertDataObjectFromTaskModel(taskModel));
+        }catch (Exception e){
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR,"用户已存在");
+        }
     }
 
     private TaskDO convertDataObjectFromTaskModel(TaskModel taskModel) {
@@ -71,6 +75,16 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteTask(Integer id) {
         taskDOMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * 根据taskName删除任务
+     *
+     * @param taskName
+     */
+    @Override
+    public void deleteTask(String taskName) {
+        taskDOMapper.deleteByTaskName(taskName);
     }
 
     /**

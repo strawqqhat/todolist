@@ -54,4 +54,6 @@ public interface TaskDOMapper {
     int updateByPrimaryKey(TaskDO record);
 
     List<TaskDO> listTasks();
+
+    TaskDO selectByTaskName(String taskName);
 }

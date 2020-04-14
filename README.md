@@ -69,4 +69,20 @@
             - 若修改的task之前未添加，则会自动进行添加，若已添加过，则当前添加的会将旧的覆盖.
 
 
-后端程序已部署至阿里云上： http://123.57.34.206 
+后端程序已部署至阿里云上： http://123.57.34.206
+
+
+
+前端
+使用React框架搭建前端实现一个todolist界面
+功能包括
+    -返回所有TODO任务
+    -创建一个新的TODO任务
+    -修改一个TODO任务
+    -删除一个TODO任务
+-安装react框架 
+    -cnpm install -g create-react-app
+-安装跨域代理
+    -npm install http-proxy-middleware --save
+-安装qs库，解决axios传递数据格式问题
+    -npm install qs --save

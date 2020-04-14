@@ -6,22 +6,18 @@ import com.error.EmBusinessError;
 import com.response.CommonReturnType;
 import com.service.TaskService;
 import com.service.model.TaskModel;
-import org.apache.commons.lang3.StringUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -30,15 +26,19 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/task")
+@Api("任务管理")
 public class TaskController extends BaseController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
-    public CommonReturnType test(){
-        return CommonReturnType.create("test");
-    }
+    // debug
+//    @RequestMapping(value = "/test", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
+//    public CommonReturnType test(){
+//        return CommonReturnType.create("test");
+//    }
 
+
+    @ApiOperation("返回所有的task")
     @RequestMapping(value = "/list", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
     public CommonReturnType listTasks(){
         List<TaskModel> taskModelList = taskService.getTaskList();
@@ -63,6 +63,7 @@ public class TaskController extends BaseController {
         return taskVO;
     }
 
+    @ApiOperation(value = "增加一个task")
     @RequestMapping(value = "/add", method = RequestMethod.POST,produces="application/json;charset=UTF-8")
     public CommonReturnType addTask(@RequestParam(value = "id",required = false) Integer id,
                                     @RequestParam(value = "taskName",required = true)String taskName,
@@ -80,20 +81,24 @@ public class TaskController extends BaseController {
             taskModel.setDeadline(DateTime.parse(deadline, formatter));
         }
         taskService.addTask(taskModel);
-        //debug
-        System.out.println(taskModel);
-        return CommonReturnType.create(null);
+
+        // 返回全部list
+        return listTasks();
+//        return CommonReturnType.create(null);
     }
 
+    @ApiOperation(value = "删除一个task")
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE,produces="application/json;charset=UTF-8")
     public CommonReturnType deleteTask(@RequestParam(value = "id", required = false)Integer id,
                                        @RequestParam(value = "taskName", required = true )String taskName ){
         if (id!=null)
             taskService.deleteTask(id);
         else taskService.deleteTask(taskName);
-        return CommonReturnType.create(null);
+//        return CommonReturnType.create(null);
+        return listTasks();
     }
 
+    @ApiOperation(value = "修改一个task", notes = "如果修改未存在的task，那么会自动添加这个task")
     @RequestMapping(value = "/modify", method = RequestMethod.PUT,produces="application/json;charset=UTF-8")
     public CommonReturnType modifyTask(@RequestParam(value = "id",required = false) Integer id,
                                        @RequestParam(value = "taskName",required = true)String taskName,
@@ -114,7 +119,8 @@ public class TaskController extends BaseController {
             taskModel.setDeadline(DateTime.parse(deadline, formatter));
         }
         taskService.modifyTask(taskModel);
-        return CommonReturnType.create(null);
+        //return CommonReturnType.create(null);
+        return listTasks();
     }
 
     /**

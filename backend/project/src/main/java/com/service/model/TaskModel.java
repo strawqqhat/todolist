@@ -3,6 +3,7 @@ package com.service.model;
 import lombok.Data;
 import org.joda.time.DateTime;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -22,6 +23,7 @@ public class TaskModel {
     // 任务描述
     private String description;
     // 截止日期
+    @Future
     private DateTime deadline;
     // 是否完成 0是未完成，1是完成
     @Min(value = 0, message = "finished参数只能为0或1")

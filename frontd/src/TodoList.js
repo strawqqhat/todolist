@@ -1,6 +1,7 @@
 import React ,{Component}from "react";
 import axios from "axios";
 import qs from "qs";
+import TodoItem from "./TodoItem";
 class TodoList extends Component {
     constructor(props) {
         super(props);
@@ -8,21 +9,22 @@ class TodoList extends Component {
            inputThing:'',
             error:'',
             hasError: false,
-            todos: []
+            todos: [{id:1,taskName:"chifan"}]
 
         }
     }
     //从后端获取数据
     componentDidMount() {
-        axios.get('/api/list').then(res=>{
-            const todos=res.data;
-             console.log(JSON.stringify(todos["data"]))
-            this.setState({
-                todos:todos["data"]
-            })
-
-    })
-    }
+    //     axios.get('/api/list').then(res=>{
+    //         const todos=res.data;
+    //          console.log(JSON.stringify(todos["data"]))
+    //         this.setState({
+    //             todos:todos["data"]
+    //         })
+    //
+    // })
+        console.log(this.state.todos)
+     }
     onchangeHandler=event=>{
         this.setState({
             inputthing:event.target.value
@@ -58,12 +60,17 @@ class TodoList extends Component {
                 <input
                 type="text"
                 value={inputthing}
-                data-testid={task-input}
+                data-testid="task-input"
                 onChange={this.onchangeHandler}
                 />
-                <button onClick={this.addhandler} data-test-id={add-button}>提交</button>
+                <button onClick={this.addhandler} data-test-id="add-button">提交</button>
                 {
-                    todos.map(todo=><ul key={todo.id}>{todo.taskName}</ul>)
+                    todos.map(todo=>{
+                        return(<TodoItem
+                                todo={todo}
+                                key={todo.id}/>)
+
+                    })
                 }
 
             </div>

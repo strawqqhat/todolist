@@ -80,6 +80,7 @@
     -创建一个新的TODO任务
     -修改一个TODO任务
     -删除一个TODO任务
+-npm install    
 -安装react框架 
     -cnpm install -g create-react-app
 -安装跨域代理

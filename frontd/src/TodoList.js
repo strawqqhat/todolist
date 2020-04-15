@@ -9,7 +9,7 @@ class TodoList extends Component {
            inputThing:'',
             error:'',
             hasError: false,
-            todos: []
+            todos: [{id:1,taskName:'吃饭'}]
 
         }
     }

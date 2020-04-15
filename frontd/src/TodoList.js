@@ -36,33 +36,36 @@ class TodoList extends Component {
 //添加事项
     addhandler = event => {
         const {inputthing, todos} = this.state;
-        const newthing = {
+        if (inputthing === undefined || inputthing==='')
+            console.log("字符为空");
+        else {const newthing = {
             taskName: inputthing,
             description: "",
             finished: 0
         };
-        axios.post('/api/add', qs.stringify(newthing)).then(res => {
-            console.log(res);
-            console.log(res.data);
-            //更新所有事项
-            const box = res.data["data"];
-            this.setState({
-                inputthing: '',
-                todos: box,
-                error: "",
-                hasError: false
-            });
-        }).catch(err => {
-                console.log(err)
-            },
-        )
+        console.log(inputthing)
+            axios.post('/api/add', qs.stringify(newthing)).then(res => {
+                console.log(res.data);
+                //更新所有事项
+                const box = res.data["data"];
+                this.setState({
+                    inputthing: '',
+                    todos: box,
+                    error: "",
+                    hasError: false
+                });
+            }).catch(err => {
+                    console.log(err)
+                },
+            )}
+
     }
     //删除事项
     deletehandler = (id, taskName) => {
-        const deletething = {id: id, taskName: taskName}
-        console.log(deletething)
-        axios.delete('/api/delete', qs.stringify(deletething)).then(res => {
-            console.log(res.data)
+        const deletething = {id: id, taskName: taskName};
+        console.log(deletething);
+        axios.delete('/api/delete', {params:deletething}).then(res => {
+            console.log(res.data);
             const todos = res.data;
             this.setState(
                 {
@@ -72,6 +75,7 @@ class TodoList extends Component {
                     todos: todos["data"]
                 }
             )
+            console.log(this.state.todos)
         }).catch(err => console.log(err))
 
     }

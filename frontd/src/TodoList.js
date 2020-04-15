@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import qs from "qs";
 import TodoItem from "./TodoItem";
+import "./style.css";
 
 class TodoList extends Component {
     constructor(props) {
@@ -85,11 +86,12 @@ class TodoList extends Component {
         return (
             <div>
                 <input
+                    className="task-input"
                     type="text"
                     value={inputthing}
                     onChange={this.onchangeHandler}
                 />
-                <button onClick={this.addhandler}>提交</button>
+                <button className="submit" onClick={this.addhandler}>提交</button>
                 {
                     todos.map(todo => {
                         return (<TodoItem

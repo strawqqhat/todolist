@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import TextField from "@material-ui/core/TextField";
+import "./style.css"
 
 class TodoItem extends Component {
     constructor(props) {
@@ -20,10 +21,9 @@ class TodoItem extends Component {
                            disabled={!isedit}
 
                 />
-                <div className="tools">
-                    <button type={"submit"}>修改</button>
-                    <button type={"submit"} onClick={() => this.state.deletehandler(todo.id, todo.taskName)}>删除</button>
-                </div>
+                    <button className="edit" type={"submit"}>修改</button>
+                    <button className="delete" type={"submit"} onClick={() => this.state.deletehandler(todo.id, todo.taskName)}>删除</button>
+                
             </li>
         )
     }

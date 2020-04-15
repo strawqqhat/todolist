@@ -1,27 +1,33 @@
-import React ,{Component}from "react";
+import React, {Component} from "react";
 import TextField from "@material-ui/core/TextField";
-class TodoItem extends Component{
+
+class TodoItem extends Component {
     constructor(props) {
         super(props);
-        this.state={
-            todo:props.todo,
-            key:props.key,
-            deletehandler:props.deletehandker
+        this.state = {
+            todo: props.todo,
+            deletehandler: props.deletehandler,
+            isedit: false
         }
     }
+
     render() {
-        const {todo,key}=this.state
-        return(
-            <li key={key}>
+        const {todo, isedit} = this.state
+        return (
+            <li key={todo.id}>
                 <TextField className="text"
-                value={todo.taskName}
-                ></TextField>
+                           value={todo.taskName}
+                           disabled={!isedit}
+
+                />
                 <div className="tools">
                     <button type={"submit"}>修改</button>
-                    <button type={"submit"} onClick={()=>this.state.deletehandler(key,todo.taskName)}>删除</button>
+                    <button type={"submit"} onClick={() => this.state.deletehandler(todo.id, todo.taskName)}>删除</button>
                 </div>
             </li>
         )
     }
 
-}export default TodoItem
+}
+
+export default TodoItem

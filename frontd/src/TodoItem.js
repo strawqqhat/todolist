@@ -4,7 +4,8 @@ class TodoItem extends Component{
         super(props);
         this.state={
             todo:props.todo,
-            key:props.key
+            key:props.key,
+            deletehandler:props.deletehandker
         }
     }
     render() {
@@ -16,7 +17,7 @@ class TodoItem extends Component{
       </span>
                 <div className="tools">
                     <button type={"submit"}>修改</button>
-                    <button type={"submit"}>删除</button>
+                    <button type={"submit"} onClick={()=>this.state.deletehandler(key,todo.taskName)}>删除</button>
                 </div>
             </div>
         )

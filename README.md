@@ -73,6 +73,7 @@
 
 
 
+<<<<<<< HEAD
 ## 前端：
 
 使用React框架搭建前端实现todolist界面
@@ -114,3 +115,19 @@ npm install
     npm install qs --save
     ```
 
+=======
+前端
+使用React框架搭建前端实现一个todolist界面
+功能包括
+    -返回所有TODO任务
+    -创建一个新的TODO任务
+    -修改一个TODO任务
+    -删除一个TODO任务
+-npm install    
+-安装react框架 
+    -cnpm install -g create-react-app
+-安装跨域代理
+    -npm install http-proxy-middleware --save
+-安装qs库，解决axios传递数据格式问题
+    -npm install qs --save
+>>>>>>> 5fb38cae3b3cadd880774ce7ce47937ac3297606

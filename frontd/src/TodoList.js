@@ -9,20 +9,20 @@ class TodoList extends Component {
            inputThing:'',
             error:'',
             hasError: false,
-            todos: [{id:1,taskName:"chifan"}]
+            todos: [{id:1,taskName:'吃饭'}]
 
         }
     }
     //从后端获取数据
     componentDidMount() {
-    //     axios.get('/api/list').then(res=>{
-    //         const todos=res.data;
-    //          console.log(JSON.stringify(todos["data"]))
-    //         this.setState({
-    //             todos:todos["data"]
-    //         })
-    //
-    // })
+        axios.get('/api/list').then(res=>{
+            const todos=res.data;
+             console.log(JSON.stringify(todos["data"]))
+            this.setState({
+                todos:todos["data"]
+            })
+
+     })
         console.log(this.state.todos)
      }
     onchangeHandler=event=>{
@@ -53,6 +53,23 @@ class TodoList extends Component {
         }).catch(err=>{console.log(err)},
             )
     }
+    //删除事项
+    deletehandker=(id,taskName)=>{
+        const deletething={id:id,taskName:taskName}
+        axios.delete('/api/delete',qs.stringify(deletething)).then(res=>{
+            console.log(res.data)
+            const todos=res.data["data"]
+            this.setState(
+                {
+                    inputThing:'',
+                    error:'',
+                    hasError: false,
+                    todos: todos
+                }
+            )
+        }).catch(err=>console.log(err))
+
+    }
     render() {
         const {inputthing,todos,error,hasError}=this.state;
         return(
@@ -68,7 +85,9 @@ class TodoList extends Component {
                     todos.map(todo=>{
                         return(<TodoItem
                                 todo={todo}
-                                key={todo.id}/>)
+                                key={todo.id}
+                                deletehandler={this.deletehandker}
+                        />)
 
                     })
                 }

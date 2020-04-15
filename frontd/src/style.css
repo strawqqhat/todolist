@@ -1,0 +1,53 @@
+.todoitem{
+	line-height : 40px;
+	text-align: left;
+}
+
+.submit{
+  background-color: #CCCCCC;
+  color: white;
+  height: 30px;
+  width: 60px;
+  float:right;
+} 
+.edit{
+	background-color: #FFFFFF;
+	color: blue;
+	height: 30px;
+	width: 60px;
+	margin:0px 3px 0px 10px;
+	float:right;
+}
+
+h1 {
+  margin: 20px 0 15px 0;  
+}
+
+.task-input{
+	height: 30px;
+	width: 400px;
+	margin-right:250px;
+}
+
+.text{
+	height: 30px;
+	width: 60px;
+	text-align:left;
+}
+.tools{
+	margin: 0 40px;
+}
+
+.tools{
+	margin: 0 20px;
+	height: 30px;
+	width: 300px;
+}
+.finished {
+  color: red;
+  text-decoration: line-through;
+}
+
+.unfinished {
+  color: #61DAFB;
+}

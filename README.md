@@ -23,12 +23,12 @@
 - `task_info`表字段：
 
 | Field       | Type         | Null | Key | Default             | Extra          | Comment  | Required |
-|-------------|--------------|------|-----|---------------------|----------------|----------|-----------| 
-| id          | int(11)      | NO   | PRI | NULL                | auto_increment | 任务唯一标示|  false   |  
+|-------------|--------------|------|-----|---------------------|----------------|----------|-----------|
+| id          | int(11)      | NO   | PRI | NULL                | auto_increment | 任务唯一标示|  false   |
 | task_name   | varchar(255) | NO   | UNI | NULL                |                | 任务名称  |   true    |
 | description | varchar(255) | NO   |     | 无                  |                | 任务描述 |    false   |
 | deadline    | datetime     | NO   |     | 1970-01-01 00:00:00 |                | 截止日期 |    false   |
-| finished    | int(11)      | NO   |     | -1                  |                | 是否完成 0为未完成, 1为完成| true|  
+| finished    | int(11)      | NO   |     | -1                  |                | 是否完成 0为未完成, 1为完成| true|
 
 - API:
     - 列出所有任务: 
@@ -73,16 +73,44 @@
 
 
 
-前端
-使用React框架搭建前端实现一个todolist界面
-功能包括
-    -返回所有TODO任务
-    -创建一个新的TODO任务
-    -修改一个TODO任务
-    -删除一个TODO任务
--安装react框架 
-    -cnpm install -g create-react-app
--安装跨域代理
-    -npm install http-proxy-middleware --save
--安装qs库，解决axios传递数据格式问题
-    -npm install qs --save
+## 前端：
+
+使用React框架搭建前端实现todolist界面
+
+### 工具：
+
+- qs库
+- 
+
+### 说明：
+
+功能包括：
+- 返回所有TODO任务
+- 创建一个新的TODO任务
+- 修改一个TODO任务
+- 删除一个TODO任务
+
+运行说明：
+
+```
+npm install
+```
+
+- 安装react框架 
+  
+    ```
+    cnpm install -g create-react-app
+    ```
+    
+- 安装跨域代理
+  
+    ```
+    npm install http-proxy-middleware --save
+    ```
+    
+- 安装qs库，解决axios传递数据格式问题
+  
+    ```
+    npm install qs --save
+    ```
+

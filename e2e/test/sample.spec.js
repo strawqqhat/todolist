@@ -28,8 +28,9 @@ describe('Todo List', function () {
             await page.click('.submit');
             // 之前没有设置等待时间总是导致新录入信息没加载出来就去获取，得不到新数据
             await page.waitFor(1000);
-            const len2 = await page.$$eval('#root > div > div > li', list=>list.length);
-            expect (len2-len1).to.eql(1);
+            let newTask = await page.waitFor('#root > div > div > li:last-child');
+            const expectNewTask = await page.evaluate(task=>task.querySelector('input').value, newTask);
+            expect (expectNewTask).to.eql(newTaskContent);
         });
     });
 

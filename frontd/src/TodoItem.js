@@ -1,31 +1,30 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import "./style.css"
-
-class TodoItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isedit: false
-        }
+//使用useState Hook
+const TodoItem= ({todo,deletehandler})=>{
+const [todoThing,settodo]=useState(todo);
+const [edit,setedit]=useState(false)
+    const onclick=event=>{
+    setedit(!edit)
     }
-
-    render() {
-        const todo=this.props.todo
-        const deletehandler=this.props.deletehandler
-        return (
-            <li key={todo.id}>
+    const onchange=event=>{
+    settodo({...todo,taskName:event.target.value})
+    }
+    return (
+            <li key={todoThing.id}>
                 <TextField className="text"
-                           value={todo.taskName}
-                           disabled={!this.state.isedit}
+                           value={todoThing.taskName}
+                           disabled={!edit}
+                            onChange={onchange}
 
                 />
-                    <button className="edit" type={"submit"}>修改</button>
-                    <button className="delete" type={"submit"} onClick={() => deletehandler(todo.id, todo.taskName)}>删除</button>
-                
+                <button className="edit" type={"submit"} onClick={onclick}>修改</button>
+                <button className="delete" type={"submit"} onClick={() => deletehandler(todoThing.id, todoThing.taskName)}>删除</button>
+
             </li>
         )
-    }
+
 
 }
 

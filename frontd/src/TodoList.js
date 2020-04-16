@@ -95,6 +95,7 @@ class TodoList extends Component {
                 {
                     todos.map(todo => {
                         return (<TodoItem
+                            key={todo.id}
                             todo={todo}
                             deletehandler={this.deletehandler}
                         />)

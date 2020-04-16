@@ -6,23 +6,22 @@ class TodoItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todo: props.todo,
-            deletehandler: props.deletehandler,
             isedit: false
         }
     }
 
     render() {
-        const {todo, isedit} = this.state
+        const todo=this.props.todo
+        const deletehandler=this.props.deletehandler
         return (
             <li key={todo.id}>
                 <TextField className="text"
                            value={todo.taskName}
-                           disabled={!isedit}
+                           disabled={!this.state.isedit}
 
                 />
                     <button className="edit" type={"submit"}>修改</button>
-                    <button className="delete" type={"submit"} onClick={() => this.state.deletehandler(todo.id, todo.taskName)}>删除</button>
+                    <button className="delete" type={"submit"} onClick={() => deletehandler(todo.id, todo.taskName)}>删除</button>
                 
             </li>
         )

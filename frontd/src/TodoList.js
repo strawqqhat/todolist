@@ -84,12 +84,14 @@ class TodoList extends Component {
         const edit={id:id,taskName:taskname,finished: 0}
         axios.put('/api/modify',qs.stringify(edit)).then(res => {
             console.log(res.data);
+            const todos=res.data
             this.setState(
                 {
                     inputThing: '',
                     error: '',
                     hasError: false,
-                    todos: this.state.todos.map((x) => (x.id ===edit.id ? edit : x))
+                    //todos: this.state.todos.map((x) => (x.id ===edit.id ? edit : x))
+                    todos:todos['data']
                 }
             )
             console.log(this.state.todos)

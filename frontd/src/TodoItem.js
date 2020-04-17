@@ -14,7 +14,7 @@ const [edit,setedit]=useState(false)
     const blur=(id,taskname)=>{
     console.log(todoThing)
     edithandler(id,taskname);
-    settodo(false)
+    setedit(false)
     }
     return (
             <li key={todoThing.id}>

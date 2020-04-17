@@ -12,6 +12,7 @@ describe('Todo List', function () {
     after (async function () {
         await page.close();
     });
+    
     describe('get all tasks', function() {
 
         it('should return all tasks correctly', async function () {
@@ -53,6 +54,27 @@ describe('Todo List', function () {
             await page.waitFor(1000);
             const len2 = await page.$$eval('#root > div > div > li', list=>list.length);
             expect (len1-len2).to.eql(1);
+        });
+    });
+
+    describe('edit a task', function() {
+        it('should edit a task correctly', async function() {
+
+            const newContent = 'updated task';
+            // 点击最后一个任务的编辑按钮
+            await page.click('#root > div > div > li:last-child .edit', {delay:500});
+            // 点击最后一个任务的输入框三下使该任务原有内容被选中
+            let updatedTask = await page.waitFor('#root > div > div > li:last-child');
+            const editArea = await page.$('#root > div > div > li:last-child > div');
+            await editArea.click({clickCount: 3});
+            // 在被选中的原有内容上进行编辑，修改为新的内容
+            await editArea.type(newContent, {delay: 500});
+            // 获取编辑完成后该任务项的新的内容
+            await page.click('#root > div > div > li:last-child .edit', {delay:500});
+            const expectUpdatedTask = await page.evaluate(task=>task.querySelector('input').value, updatedTask);
+            // 若获取到的新的内容与输入内容一致则认为编辑功能测试是正确的
+            expect (expectUpdatedTask).to.eql(newContent);
+
         });
     });
     

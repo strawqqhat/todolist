@@ -81,6 +81,7 @@ class TodoList extends Component {
     }
     //编辑事项
     edithandler=(id,taskname)=>{
+        if (taskname==='')return;
         const edit={id:id,taskName:taskname,finished: 0}
         axios.put('/api/modify',qs.stringify(edit)).then(res => {
             console.log(res.data);

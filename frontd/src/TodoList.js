@@ -20,6 +20,8 @@ class TodoList extends Component {
     componentDidMount() {
         axios.get('/api/list').then(res => {
             const todos = res.data;
+            const state=res.data['status']
+            if (state==='fail')return;
             console.log(JSON.stringify(todos["data"]))
             this.setState({
                 todos: todos["data"]
@@ -48,6 +50,8 @@ class TodoList extends Component {
             axios.post('/api/add', qs.stringify(newthing)).then(res => {
                 console.log(res.data);
                 //更新所有事项
+                const state=res.data['status']
+                if (state==='fail')return;
                 const box = res.data["data"];
                 this.setState({
                     inputthing: '',
@@ -67,6 +71,8 @@ class TodoList extends Component {
         axios.delete('/api/delete', {params:deletething}).then(res => {
             console.log(res.data);
             const todos = res.data;
+            const state=res.data['status']
+            if (state==='fail')return;
             this.setState(
                 {
                     inputThing: '',
@@ -85,7 +91,9 @@ class TodoList extends Component {
         const edit={id:id,taskName:taskname,finished: 0}
         axios.put('/api/modify',qs.stringify(edit)).then(res => {
             console.log(res.data);
-            const todos=res.data
+            const todos=res.data;
+            const state=res.data['status']
+            if (state==='fail')return;
             this.setState(
                 {
                     inputThing: '',

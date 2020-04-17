@@ -12,8 +12,9 @@ import TodoList from "./TodoList";
 import { ListItem, ExpansionPanelActions } from "@material-ui/core";
 
 describe("<Todolist>",()=>{
-    const ;
-    const ;
+    const item = { id: 1, content: "First Item", createAt: "2020/04/17" };
+    const updateItem = { id: 1, content: "Update Item", createAt: "2020/04/17" };
+    const addedItem = { id: 2, content: "Second Item", createAt: "2020/04/17" };
 
     beforeEach(() => {
         jest

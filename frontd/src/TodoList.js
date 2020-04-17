@@ -64,7 +64,6 @@ class TodoList extends Component {
     //删除事项
     deletehandler = (id, taskName) => {
         const deletething = {id: id, taskName: taskName};
-        console.log(deletething);
         axios.delete('/api/delete', {params:deletething}).then(res => {
             console.log(res.data);
             const todos = res.data;
@@ -78,6 +77,24 @@ class TodoList extends Component {
             )
             console.log(this.state.todos)
         }).catch(err => console.log(err))
+
+    }
+    //编辑事项
+    edithandler=(id,taskname)=>{
+        const edit={id:id,taskName:taskname,finished: 0}
+        axios.put('/api/modify',qs.stringify(edit)).then(res => {
+            console.log(res.data);
+            this.setState(
+                {
+                    inputThing: '',
+                    error: '',
+                    hasError: false,
+                    todos: this.state.todos.map((x) => (x.id ===edit.id ? edit : x))
+                }
+            )
+            console.log(this.state.todos)
+        }).catch(err => console.log(err))
+
 
     }
 
@@ -98,6 +115,7 @@ class TodoList extends Component {
                             key={todo.id}
                             todo={todo}
                             deletehandler={this.deletehandler}
+                            edithandler={this.edithandler}
                         />)
 
                     })

@@ -112,27 +112,28 @@ class TodoList extends Component {
     render() {
         const {inputthing, todos, error, hasError} = this.state;
         return (
+        <React.Fragment>
             <div>
                 <input
                     className="task-input"
                     type="text"
                     value={inputthing}
                     onChange={this.onchangeHandler}
+                    data-testid="task-input"
                 />
                 <button className="submit" onClick={this.addhandler}>提交</button>
-                {
-                    todos.map(todo => {
-                        return (<TodoItem
-                            key={todo.id}
-                            todo={todo}
-                            deletehandler={this.deletehandler}
-                            edithandler={this.edithandler}
-                        />)
-
-                    })
-                }
-
-            </div>
+            </div>      
+            <ul data-testid="task-items" className="task-items">
+             {todos.map((todo) => {
+               return (<TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    deletehandler={this.deletehandler}
+                    edithandler={this.edithandler}
+               />)
+               })}
+            </ul>
+        </React.Fragment>
         )
 
     }

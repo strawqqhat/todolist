@@ -8,7 +8,7 @@ import {
     getAllByTestId,
 } from "@testing-library/react";
 import TodoList from "./TodoList";
-//api   import * as TodoApi from "./api/TodoApi";
+import * as TodoApi from "./api/TodoApi";
 import { ListItem, ExpansionPanelActions } from "@material-ui/core";
 
 describe("<Todolist>",()=>{
@@ -18,23 +18,23 @@ describe("<Todolist>",()=>{
 
     beforeEach(() => {
         jest
-            .spyOn(,"getTodos")
-            .mockImplementation(()=>Promise.resolve([ListItem]));
+            .spyOn(TodoApi,"getTodos")
+            .mockImplementation(()=>Promise.resolve([item]));
     });
 
-    //01 render display
+    //01 render display 
     test("should display todo list correctly", async()=>{
         await act(async()=>{
-            render(<Todolist />);
+            render(<TodoList />);
         });
-        expect(getByTestId(document.body,"task-item")).toHaveTextContent(
+        expect(getByTestId(document.body,"task-items")).toHaveTextContent(
             "First Item"
         );
     });
     //02 delete
     test("should delete todoItem correctly", async () => {
         jest
-          .spyOn(, "deleteTodo")
+          .spyOn(TodoApi, "deleteTodo")
           .mockImplementation(() => Promise.resolve({}));
     
         await act(async () => {
@@ -44,13 +44,13 @@ describe("<Todolist>",()=>{
         act(() => {
           fireEvent.click(getByTestId(document.body, "delete-button"));
         });
-        await wait(() => expect( .deleteTodo).toHaveBeenCalled());
+        await wait(() => expect( TodoApi.deleteTodo).toHaveBeenCalled());
         expect(getByTestId(document.body, "task-items")).toBeEmpty();
       });
     //03 edit
-      test("should edit todoItem correctly", async () => {
+    /*  test("should edit todoItem correctly", async () => {
         jest
-          .spyOn(, "updateTodo")
+          .spyOn(TodoApi, "updateTodo")
           .mockImplementation(() => Promise.resolve(updateItem));
     
         await act(async () => {
@@ -70,7 +70,7 @@ describe("<Todolist>",()=>{
     //04 add
       test("should add todo item correctly", async () => {
         jest
-          .spyOn( , "addTodo")
+          .spyOn( TodoApi, "addTodo")
           .mockImplementation(() => Promise.resolve(addedItem));
     
         await act(async () => {
@@ -91,7 +91,7 @@ describe("<Todolist>",()=>{
         expect(taskItems[1]).toHaveTextContent(addedItem.content);
       });
     //05 finished display
-      test("should finished Item correctly", async()=>{
+    /*  test("should finished Item correctly", async()=>{
         jest 
         
         await act(async()=>{
@@ -105,4 +105,5 @@ describe("<Todolist>",()=>{
         expect();
         expect();
       })
+    */
 });

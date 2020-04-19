@@ -1,6 +1,7 @@
 ## 自动化测试
 
-<div align=center><img height=100% width=100% src='https://gitee.com/strawqqhat/show/blob/master/show.gif'></img></div>
+<!-- <div align=center><img height=100% width=100% src='https://gitee.com/strawqqhat/show/blob/master/show.gif'></img></div> -->
+![demo](show.gif )  
 
 <font color='red'>**显示任务列表**</font>
 ```

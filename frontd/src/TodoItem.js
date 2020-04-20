@@ -25,8 +25,8 @@ const [edit,setedit]=useState(false)
                            onBlur={()=>blur(todoThing.id,todoThing.taskName)}
 
                 />
-                <button className="edit" type={"submit"} onClick={onclick}>修改</button>
-                <button className="delete" type={"submit"} onClick={() => deletehandler(todoThing.id, todoThing.taskName)}>删除</button>
+                <button className="edit" type={"submit"} data-testid="edit-button" onClick={onclick}>修改</button>
+                <button className="delete" type={"submit"} data-testid="delete-button" onClick={() => deletehandler(todoThing.id, todoThing.taskName)}>删除</button>
 
             </li>
         )

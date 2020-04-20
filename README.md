@@ -116,18 +116,35 @@ npm install
     ```
 
 =======
-前端
-使用React框架搭建前端实现一个todolist界面
-功能包括
-    -返回所有TODO任务
-    -创建一个新的TODO任务
-    -修改一个TODO任务
-    -删除一个TODO任务
--npm install    
--安装react框架 
-    -cnpm install -g create-react-app
--安装跨域代理
-    -npm install http-proxy-middleware --save
--安装qs库，解决axios传递数据格式问题
-    -npm install qs --save
+- 前端
+    - 使用React框架搭建前端实现一个todolist界面
+- 功能包括
+    - 返回所有TODO任务
+    - 创建一个新的TODO任务
+    - 修改一个TODO任务
+    - 删除一个TODO任务
+- npm install    
+- 安装react框架 
+    - cnpm install -g create-react-app
+- 安装跨域代理
+    - npm install http-proxy-middleware --save
+- 安装qs库，解决axios传递数据格式问题
+    - npm install qs --save
 >>>>>>> 5fb38cae3b3cadd880774ce7ce47937ac3297606
+
+
+
+# 总结
+
+- ## 后端总结（8条）：
+    - 学会使用SpringBoot对RESTful接口的测试。 params接受的参数是`MultiValueMap`类型而不是`Map`.
+    - 中文存储到数据库出现乱码时按顺序排查：
+        - 确定发送方和接收方的编码格式均为utf8
+        - 确定表的编码格式为utf8
+        - 确定数据库的编码格式为utf8。 本次出现问题的地方在数据库的编码格式不是utf8，修改`my.cnf`文件，加上`character_set_server=utf8` 之后重启mysql服务之后，中文存储不再是问号乱码.
+    - 定义全局的异常拦截器（使用BaseController作为所有Controller都需要继承的基类，并对BaseController加ExceptionHandler注解，实现了全局的异常拦截器。）
+    - 使用视图，领域模型，DataObject进行分层通过贫血模式实现，层与层之间耦合较低，可扩展性较强。
+    - 自定义了异常类， 丰富了错误类型及对应的错误信息, 方便扩展。
+    - 使用了mybatis-generator，使得开发效率更加高效。
+    - 学习使用JSR-303，使得参数校验更为方便。
+    - 使用maven打包成jar包部署到阿里云主机，使得在外网可以调用对应api。

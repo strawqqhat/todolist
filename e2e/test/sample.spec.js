@@ -36,7 +36,7 @@ describe('Todo List', function () {
             // 之前没有设置等待时间总是导致新录入信息没加载出来就去获取，得不到新数据
             await page.waitFor(1000);
             // 每个li标签包含一个任务项，:last-child选取最后一个任务项，也就是新增的任务项
-            let newTask = await page.waitFor('#root > div > div > li:last-child');
+            let newTask = await page.waitFor('.task-items li:last-child');
             // 使用querySelector找到input标签，新增任务项的内容在input标签中的value属性里
             const expectNewTask = await page.evaluate(task=>task.querySelector('input').value, newTask);
             expect (expectNewTask).to.eql(newTaskContent);

@@ -143,6 +143,7 @@ npm start
         - 字体；字号；行高；字色；字型；对齐方式；文字阴影；文字描边；背景；线性渐变；透明度；盒阴影；遮罩；反射；变形；边框；圆角；布局；宽高；
         - 对于不同的组件来说有不同的侧重属性，本次大作业主要用到对文本text、按钮button、输入框input的属性；
     - material-ui/core/TextField：React 下的material-ui框架
+    - 尝试了一些css工具： **[CSS Lint](http://csslint.net/)** 、 **[CSS Stats](http://cssstats.com/)** 、 **[Codrops CSS 语法参考](http://tympanus.net/codrops/css_reference/)** 、 Emmet 。以及在线编写css平台： https://jsbin.com/?js,console 
 - TDD for REACT
     - 单元测试与单元测试框架Jest
       - 单元测试优势： 由于被测试对象的简单（通常只有一个或多个输入以及一个输出），这就决定了单元测试**开发起来也很简单**，通常每个测试只有几行到十几行不等。测试代码的简单表示它可以被**更频繁的执行**（事实上，很多单元测试框架都有 watch 模式。每次改动代码时都会自动执行单元测试）。更频繁的执行意味着**更早的发现问题**。 

@@ -48,15 +48,14 @@ describe('Todo List', function () {
         it('should delete a task correctly', async function() {
             
             // 获取删除前任务项的数目
-            let todoList = await page.$$('#root > div > div > li');
-            const len1 = todoList.length;
+            const len1 = await page.$$eval('.task-items li', list=>list.length);
             // 点击删除按钮，删除一个任务项
             await page.evaluate(()=> {
                 document.querySelector('.delete').click()
             });
             await page.waitFor(1000);
             // 获取删除后任务项的数目
-            const len2 = await page.$$eval('#root > div > div > li', list=>list.length);
+            const len2 = await page.$$eval('.task-items li', list=>list.length);
             // 若删除前任务项的数目比删除后任务项数目多一项，则认为删除功能测试是正确的
             expect (len1-len2).to.eql(1);
 

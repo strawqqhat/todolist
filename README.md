@@ -1,6 +1,8 @@
-# 敏捷Web开发大作业
+# 敏捷Web开发大作业实验报告
 
 ## 后端:
+
+### 简介
 
 使用mysql进行数据持久化存储。并使用视图，领域模型，DataObject进行分层通过贫血模式实现，可扩展性较强。自定义了异常类， 丰富了错误类型及对应的错误信息, 方便扩展.
 
@@ -9,7 +11,7 @@
 - mybatis
 - maven
 
-### 说明：
+### 说明（对接层规范、表结构、API接口）：
 - 统一返回类型, 后端返回类型固定包含2个属性分别为: 
     - `status`:
         - `success`: 表示操作成功
@@ -68,8 +70,9 @@
         - 额外说明：
             - 若修改的task之前未添加，则会自动进行添加，若已添加过，则当前添加的会将旧的覆盖.
 
+## 部署
 
-后端程序已部署至阿里云上： http://123.57.34.206
+todolist程序已部署至阿里云上：http://123.57.34.206:3000/
 
 
 
@@ -118,7 +121,7 @@ npm install
 npm start
 ```
 
-# 总结
+# 总结（23条）
 
 - ## 后端总结（8条）：
     - 学会使用SpringBoot对RESTful接口的测试。 params接受的参数是`MultiValueMap`类型而不是`Map`.
@@ -131,9 +134,16 @@ npm start
     - 自定义了异常类， 丰富了错误类型及对应的错误信息, 方便扩展。
     - 使用了mybatis-generator，使得开发效率更加高效。
     - 学习使用JSR-303，使得参数校验更为方便。
-    - 使用maven打包成jar包部署到阿里云主机，使得在外网可以调用对应api。
+    - 使用maven打包成jar包部署到阿里云主机，使得在外网可以调用对应api
 
-- ## 前端总结（5条）：
+- ## 部署总结（3条）：
+    - `pm2 start --name appName npm -- start --watch` 让npm在后台执行
+    - `lsof -i:端口号` 查看占用了制定端口号的进程PID
+    - 当启动了npm之后，`kill`不掉占用了3000端口的进程，需要`kill -9`才可以。 `kill`和`kill -9`的区别就是发送的kill信号不同，默认`kill`是 kill -15
+      - kill -15代表的信号为SIGTERM，这是告诉进程你需要被关闭，请自行停止运行并退出；
+      - kill -9代表的信号是SIGKILL，表示进程被终止，需要立即退出；
+
+- ## 前端总结（7条）：
 
   - UI设计
     - CSS：层叠样式表
@@ -186,7 +196,7 @@ npm start
 	    - `lastPromiseGet` - returns promise created when the most recent request was made
 	    - `reset` - resets the Axios mock object - prepare it for the next test (typically used in `afterEach`)
 	
-- ## 自动化测试总结（5条）：
+- ### 自动化测试总结（5条）：
 	- 1.后代选择器与子元素选择器的使用。
 		- 出处：自动化测试部分
 		- 使用场景： 后代选择器用空格表示，如“div span”,它可以匹配div后面的span标签，选择的是所有特定后代标签，包括儿子、孙子等。子元素选择器用>表示，如div > span，匹配div后所有的span，所有特定的直接标签，也就是只选中儿子标签。

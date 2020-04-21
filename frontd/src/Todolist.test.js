@@ -6,90 +6,81 @@ import {
     wait,
     getByTestId,
     getAllByTestId,
+    getByAltText,
 } from "@testing-library/react";
 import TodoList from "./TodoList";
-import TodoItem from "./TodoItem";
-import * as TodoApi from "./api/TodoApi";
-import { ListItem, ExpansionPanelActions } from "@material-ui/core";
+import mockAxios from 'jest-mock-axios';
+import axios from 'axios';
+
+
 
 describe("<Todolist>",()=>{
     const item = { id: 1, taskName: "First Item", description:"",deadline:"",finished:"0"};
     const updateItem = { id: 1, taskName: "Update Item", description:"",deadline:"",finished:"0"};
     const addedItem = { id: 2, taskName: "Second Item", description:"",deadline:"",finished:"0" };
 
-    beforeEach(() => {
-        jest
-            .spyOn(TodoApi,"getTodos")
-            .mockImplementation(()=>Promise.resolve([item]));
+    afterEach(() => {
+      // cleaning up the mess left behind the previous test
+      mockAxios.reset();
     });
 
     //01 render display 
     test("should display todo list correctly", async()=>{
-        
+        let data = jest.fn();
+        let axiosPromisedisplay = axios.post('http://123.57.34.206/task/add',item)
         await act(async()=>{
-            render(<TodoList />);
+            const {getByTestId} = render(<TodoList />);
         });
-              
         const display = getByTestId(document.body,"task-items");
-
+        console.log(axiosPromisedisplay)
         expect(getByTestId(document.body,"task-items")).toEqual(
           display
         );
     });
     //02 delete
     test("should delete todoItem correctly", async () => {
-        jest
-          .spyOn(TodoApi, "deleteTodo")
-          .mockImplementation(() => Promise.resolve({}));
-    
+        let axiosPromisedelete = axios.post('http://123.57.34.206/task/delete',updateItem);
         await act(async () => {
           render(<TodoList />);
         });
-  
+        act(() => {
+          fireEvent.click(getByTestId(document.body, "task-items"));
+        });
+        const Delete = axiosPromisedelete;
         expect(getByTestId(document.body, "task-items")).toBeEmpty();
       });
     //03 edit
     test("should edit todoItem correctly", async () => {
-        jest
-          .spyOn(TodoApi, "updateTodo")
-          .mockImplementation(() => Promise.resolve(updateItem));
-    
+        let axiosPromiseedit = axios.put('http://123.57.34.206/task/modify',addedItem);
         await act(async () => {
           render(<TodoList />);
         });
         const textarea = document.querySelector("li textarea");
         const updateItem = textarea;
-        /*act(() => {
-          fireEvent.click(getByTestId(document.body, "edit-button"));
-          fireEvent.change(textarea, {
-            target: { value: updateItem.content },
+        act(() => {
+          fireEvent.click(getByTestId(document.body, "task-input"));
           });
-          fireEvent.blur(textarea);
-        });
-        await wait(() => expect( .updateTodo).toHaveBeenCalled());*/
+        //console.log(updateItem)
+        console.log(axiosPromiseedit)
         expect(textarea).toEqual(updateItem);
       });
     //04 add
       test("should add todo item correctly", async () => {
-        jest
-          .spyOn( TodoApi, "addTodo")
-          .mockImplementation(() => Promise.resolve(addedItem));
-    
+        let axiosPromiseedit = axios.put('http://123.57.34.206/task/add',addedItem);
         await act(async () => {
           render(<TodoList />);
         });
+
         act(() => {
           fireEvent.change(getByTestId(document.body, "task-input"), {
             target: { value: addedItem.content },
           });
         });
         
-        /*act(() => {
-          fireEvent.click(getByTestId(document.body, "add-button"));
-        });
-        await wait(() => expect( .addTodo).toHaveBeenCalled());*/
         const taskItems = getAllByTestId(document.body, "task-items");
+        
         const taskinput = taskItems;
+        console.log(axiosPromiseedit);
         //console.log(taskItems.tag);
         //expect(taskItems.length).toEqual(2);
         expect(taskItems.addedItem).toEqual(taskinput.addedItem);

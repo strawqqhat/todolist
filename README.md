@@ -142,8 +142,7 @@ npm install
         - 对于不同的组件来说有不同的侧重属性，本次大作业主要用到对文本text、按钮button、输入框input的属性；
     - material-ui/core/TextField：React 下的material-ui框架
       - 调用框架API实现ui；
-
-  - TDD for REACT
+- TDD for REACT
     - 单元测试与单元测试框架Jest
       - 单元测试：测试是一种验证代码是否可以按照预期工作的手段。
       - 单元测试优势： 由于被测试对象的简单（通常只有一个或多个输入以及一个输出），这就决定了单元测试**开发起来也很简单**，通常每个测试只有几行到十几行不等。测试代码的简单表示它可以被**更频繁的执行**（事实上，很多单元测试框架都有 watch 模式。每次改动代码时都会自动执行单元测试）。更频繁的执行意味着**更早的发现问题**。 
@@ -154,7 +153,7 @@ npm install
         - 实际得到的结果
         - 期望的结果
         - mock / spy 
-      - 单元测试步骤：
+      - 单元测试步骤：AAA模式， **AAA模式**：编排（Arrange），执行（Act），断言（Assert）。 
         - 准备阶段：构造参数，创建 spy 等
         - 执行阶段：用构造好的参数执行被测试代码
         - 断言阶段：用实际得到的结果与期望的结果比较，以判断该测试是否正常
@@ -174,12 +173,19 @@ npm install
         - React 组件的 render 结果是一个组件树，并且整个树最终会被解析成一个纯粹由 HTML 元素构成的树形结构
         - React 组件可以拥有 state，且 state 的变化会影响 render 结果
         - React 组件可以拥有生命周期函数，这些生命周期函数会在特定时间点执行
-      - 而React也为开发者提供了专门的测试库：@testing-library/react
-        - 只需要import相关的包即可。
+      - React专门的测试库：@testing-library/react
       - 测试工具
         - react-test-renderer
         - react-dom/test-utils
-		
+  -  jest-mock-axios 
+    - Axios mock API： `post`, `get`, `put`, `patch`, `delete`, `create`, `all`, `head`, `options`, `request` 
+	    - `mockResponse` - simulates a server (web service) response
+	    - `mockError` - simulates a (network/server) error
+	    - `lastReqGet` - returns extended info about the most recent request
+	    - `lastPromiseGet` - returns promise created when the most recent request was made
+	    - `reset` - resets the Axios mock object - prepare it for the next test (typically used in `afterEach`)
+	  - 
+	
 - ## 自动化测试总结（5条）：
 	- 1.后代选择器与子元素选择器的使用。
 		- 出处：自动化测试部分
@@ -201,4 +207,3 @@ npm install
 		- 使用场景：前者可以获取多个数据，后者只能获取一个数据
 
 
-  

@@ -1,4 +1,4 @@
-# 敏捷Web开发大作业实验报告
+# 敏捷Web开发大作业
 
 ## 后端:
 
@@ -145,17 +145,6 @@ npm start
 
 - ## 前端总结（7条）：
 
-<<<<<<< HEAD
-  - UI设计
-    - CSS：层叠样式表
-      - ps：chrome插件code cola可以方便的直接编辑网页ui并获得相关的html/css样式。神器。
-      - CSS能够对网页中元素的排版进行像素级精确控制。
-      - 常用的属性和方法：
-        - 字体；字号；行高；字色；字型；对齐方式；文字阴影；文字描边；背景；线性渐变；透明度；盒阴影；遮罩；反射；变形；边框；圆角；布局；宽高；
-        - 对于不同的组件来说有不同的侧重属性，本次大作业主要用到对文本text、按钮button、输入框input的属性；
-    - material-ui/core/TextField：React 下的material-ui框架
-    - 尝试了一些css工具： **[CSS Lint](http://csslint.net/)** 、 **[CSS Stats](http://cssstats.com/)** 、 **[Codrops CSS 语法参考](http://tympanus.net/codrops/css_reference/)** 、 Emmet 。以及在线编写css平台： https://jsbin.com/?js,console 
-=======
 - UI设计
   - CSS：层叠样式表
     - ps：chrome插件code cola可以方便的直接编辑网页ui并获得相关的html/css样式。神器。
@@ -166,7 +155,6 @@ npm start
   - material-ui/core/TextField：React 下的material-ui框架
   - 尝试了一些css工具： **[CSS Lint](http://csslint.net/)** 、 **[CSS Stats](http://cssstats.com/)** 、 **[Codrops CSS 语法参考](http://tympanus.net/codrops/css_reference/)** 、 Emmet 。以及在线编写css平台： https://jsbin.com/?js,console 
   
->>>>>>> 02cc31320c11fac56d68a6e3b81627d619f5badf
 - TDD for REACT
     - 单元测试与单元测试框架Jest
       - 单元测试优势： 由于被测试对象的简单（通常只有一个或多个输入以及一个输出），这就决定了单元测试**开发起来也很简单**，通常每个测试只有几行到十几行不等。测试代码的简单表示它可以被**更频繁的执行**（事实上，很多单元测试框架都有 watch 模式。每次改动代码时都会自动执行单元测试）。更频繁的执行意味着**更早的发现问题**。 
@@ -205,21 +193,12 @@ npm start
 - jest-mock-axios 
     - Axios mock API： `post`, `get`, `put`, `patch`, `delete`, `create`, `all`, `head`, `options`, `request` 
       - `mockResponse` - simulates a server (web service) response
-<<<<<<< HEAD
-	    - `mockError` - simulates a (network/server) error
-	    - `lastReqGet` - returns extended info about the most recent request
-	    - `lastPromiseGet` - returns promise created when the most recent request was made
-	    - `reset` - resets the Axios mock object - prepare it for the next test (typically used in `afterEach`)
-	
-- ### 自动化测试总结（5条）：
-=======
         - `mockError` - simulates a (network/server) error
         - `lastReqGet` - returns extended info about the most recent request
         - `lastPromiseGet` - returns promise created when the most recent request was made
         - `reset` - resets the Axios mock object - prepare it for the next test (typically used in `afterEach`)
 
 - ## 自动化测试总结（5条）：
->>>>>>> 02cc31320c11fac56d68a6e3b81627d619f5badf
 	- 1.后代选择器与子元素选择器的使用。
 		- 出处：自动化测试部分
 		- 使用场景： 后代选择器用空格表示，如“div span”,它可以匹配div后面的span标签，选择的是所有特定后代标签，包括儿子、孙子等。子元素选择器用>表示，如div > span，匹配div后所有的span，所有特定的直接标签，也就是只选中儿子标签。

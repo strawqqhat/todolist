@@ -79,12 +79,12 @@
 
 ### 工具：
 
-- qs
+- axios/qs
+- proxy
 - Jest
 
 ### 说明：
 
-功能包括：
 - 返回所有TODO任务
 - 创建一个新的TODO任务
 - 修改一个TODO任务
@@ -114,7 +114,9 @@ npm install
     npm install qs --sav
     ```
 
-
+```
+npm start
+```
 
 # 总结
 
@@ -131,7 +133,7 @@ npm install
     - 学习使用JSR-303，使得参数校验更为方便。
     - 使用maven打包成jar包部署到阿里云主机，使得在外网可以调用对应api。
 
-- ## 前端总结：
+- ## 前端总结（5条）：
 
   - UI设计
     - CSS：层叠样式表

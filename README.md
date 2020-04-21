@@ -186,7 +186,6 @@ npm start
 	    - `lastReqGet` - returns extended info about the most recent request
 	    - `lastPromiseGet` - returns promise created when the most recent request was made
 	    - `reset` - resets the Axios mock object - prepare it for the next test (typically used in `afterEach`)
-	  - 
 	
 - ## 自动化测试总结（5条）：
 	- 1.后代选择器与子元素选择器的使用。

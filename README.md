@@ -146,7 +146,6 @@ npm start
       - 调用框架API实现ui；
 - TDD for REACT
     - 单元测试与单元测试框架Jest
-      - 单元测试：测试是一种验证代码是否可以按照预期工作的手段。
       - 单元测试优势： 由于被测试对象的简单（通常只有一个或多个输入以及一个输出），这就决定了单元测试**开发起来也很简单**，通常每个测试只有几行到十几行不等。测试代码的简单表示它可以被**更频繁的执行**（事实上，很多单元测试框架都有 watch 模式。每次改动代码时都会自动执行单元测试）。更频繁的执行意味着**更早的发现问题**。 
       - 单元测试限制/不足： 单元测试覆盖率往往会给开发人员一种错觉：这段代码的单元测试都通过了（测试覆盖率以及 100% 了），肯定没有 bug。其实不然，单元测试覆盖率与代码质量没有必然的联系。 
       - 单元测试包含的几个部分：
@@ -179,9 +178,9 @@ npm start
       - 测试工具
         - react-test-renderer
         - react-dom/test-utils
-  -  jest-mock-axios 
+    -  jest-mock-axios 
     - Axios mock API： `post`, `get`, `put`, `patch`, `delete`, `create`, `all`, `head`, `options`, `request` 
-	    - `mockResponse` - simulates a server (web service) response
+      - `mockResponse` - simulates a server (web service) response
 	    - `mockError` - simulates a (network/server) error
 	    - `lastReqGet` - returns extended info about the most recent request
 	    - `lastPromiseGet` - returns promise created when the most recent request was made

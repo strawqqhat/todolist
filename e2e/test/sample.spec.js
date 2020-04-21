@@ -18,7 +18,7 @@ describe('Todo List', function () {
         it('should return all tasks correctly', async function () {
 
             // 通过li标签获取任务项的数目
-            const li_num = await page.$$eval('#root > div > div > li', list=>list.length);
+            const li_num = await page.$$eval('.task-items li', list=>list.length);
             // 通过.delete标签获取任务项的数目
             const delete_btn_num = await page.$$eval('.delete', list=>list.length);
             // 若通过两种方法获得的任务项数目相同，认为可以正确获取任务列表

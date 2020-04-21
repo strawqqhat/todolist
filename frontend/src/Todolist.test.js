@@ -65,7 +65,7 @@ describe("<Todolist>",()=>{
         expect(textarea).toEqual(updateItem);
       });
     //04 add
-      /*test("should add todo item correctly", async () => {
+      test("should add todo item correctly", async () => {
         let axiosPromiseedit = axios.put('http://123.57.34.206/task/add',addedItem);
         await act(async () => {
           render(<TodoList />);
@@ -84,6 +84,6 @@ describe("<Todolist>",()=>{
         //console.log(taskItems.tag);
         //expect(taskItems.length).toEqual(2);
         expect(taskItems.addedItem).toEqual(taskinput.addedItem);
-      });*/
+      });
     
 });
